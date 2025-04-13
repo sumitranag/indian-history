@@ -1,0 +1,61 @@
+
+body {
+
+    background-image: url("gateway.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.chat-container {
+    height: calc(100vh - 260px);
+    overflow-y: auto;
+    
+
+}
+
+.loader {
+    border: 5px solid #c51414;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-item:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    
+    border-radius: 50%;
+}
+
+.timeline-item:after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 20px;
+    width: 2px;
+    height: calc(100% + 20px);
+    
+}
+
+.timeline-item:last-child:after {
+    display: none;
+}

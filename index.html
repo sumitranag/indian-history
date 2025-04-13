@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India History Explorer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen" bgcolor="blue" >
+    <header class="bg-gradient-to-r from-orange-500 to-red-600 text-black shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0" background="gateway.jpg">
+                    <img src="gateway.jpg" alt="W3Schools.com" style="width:300px; height:200px;" alt="India History Explorer Logo" class="h-12 w-12 mr-4 rounded-full bg-white p-1">
+                    <h1 class="text-10xl md:text-4xl font-bold">BharatVrittant - India History Explorer!</h1>
+                </div>
+                <div class="flex space-x-4">
+                    <button id="timelineBtn" class="bg-white text-red-600 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg shadow">
+                        Key Timeline
+                    </button>
+                    <button id="aboutBtn" class="bg-white text-red-600 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg shadow">
+                        About
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-red rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-black-800">Explore India's Rich History</h2>
+            <p class="text-gray-600 mb-4">
+                Ask any question about Indian history, dynasties, monuments, freedom struggle, cultural heritage, or historical figures.
+                Our AI-powered assistant will provide you with accurate and informative answers.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button class="suggestion-btn bg-yellow-100 hover:bg-black-200 text-red-800 py-1 px-3 rounded-full text-sm">Tell me about the Mughal Empire</button>
+                <button class="suggestion-btn bg-yellow-100 hover:bg-gray-200 text-red-800 py-1 px-3 rounded-full text-sm">Who was Emperor Ashoka?</button>
+                <button class="suggestion-btn bg-yellow-100 hover:bg-gray-200 text-red-800 py-1 px-3 rounded-full text-sm">Explain the Indian Independence Movement</button>
+                <button class="suggestion-btn bg-yellow-100 hover:bg-gray-200 text-red-800 py-1 px-3 rounded-full text-sm">History of the Taj Mahal</button>
+                <button class="suggestion-btn bg-yellow-100 hover:bg-gray-200 text-red-800 py-1 px-3 rounded-full text-sm">Ancient Indian science and mathematics</button>
+            </div>
+        </div>
+
+        <div class="bg-yellow rounded-xl shadow-lg p-6 mb-8 chat-container" id="chatContainer">
+            <div class="flex items-start mb-4">
+                <div class="flex-shrink-0 mr-3">
+                    <div class="h-10 w-10 rounded-full bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center text-white font-bold">
+                        H
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 max-w-3xl">
+                    <p class="text-2xl text-black-800 font-family: cursive" >Welcome to India History Explorer! How can I help you explore India's rich historical legacy today?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-4">
+            <form id="questionForm" class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="questionInput" placeholder="Ask a question about Indian history..." 
+                       class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <button type="submit" class="bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 px-6 rounded-lg hover:opacity-90 transition-opacity font-medium">
+                    Ask Question
+                </button>
+            </form>
+            <p class="text-xs text-black-500 mt-2">Powered by OpenAI's GPT API. Note: Information is provided as educational content only.</p>
+        </div>
+
+        <!-- Timeline Modal -->
+        <div id="timelineModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-screen overflow-y-auto p-6 m-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">Key Events in Indian History</h2>
+                    <button id="closeTimelineBtn" class="text-gray-500 hover:text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-8 py-4">
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">3300 - 1300 BCE</h3>
+                        <p class="text-gray-600">Indus Valley Civilization</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">1500 - 500 BCE</h3>
+                        <p class="text-gray-600">Vedic Period</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">322 - 185 BCE</h3>
+                        <p class="text-gray-600">Maurya Empire</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">320 - 550 CE</h3>
+                        <p class="text-gray-600">Gupta Empire (Golden Age)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">1206 - 1526 CE</h3>
+                        <p class="text-gray-600">Delhi Sultanate</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">1526 - 1857 CE</h3>
+                        <p class="text-gray-600">Mughal Empire</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">1757 - 1947</h3>
+                        <p class="text-gray-600">British Colonial Period</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">August 15, 1947</h3>
+                        <p class="text-gray-600">Indian Independence</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="font-bold text-lg text-gray-800">1950</h3>
+                        <p class="text-gray-600">Constitution of India adopted, Republic Day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Modal -->
+        <div id="aboutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-xl max-w-2xl w-full max-h-screen overflow-y-auto p-6 m-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">About India History Explorer</h2>
+                    <button id="closeAboutBtn" class="text-gray-500 hover:text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-gray-600">
+                        India History Explorer is an educational tool designed to make Indian history accessible and engaging.
+                        Using advanced AI technology, this application provides information about India's diverse historical periods,
+                        significant events, cultural developments, and important personalities.
+                    </p>
+                    <p class="text-gray-600">
+                        This project was created as a demonstration of integrating LLM APIs to provide specialized historical knowledge.
+                        The application uses carefully crafted prompts to ensure accurate information about Indian history is provided.
+                    </p>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-800 mb-2">Important Note:</h3>
+                        <p class="text-gray-600 text-sm">
+                            While we strive for historical accuracy, this tool should be used for general educational purposes only.
+                            For academic research, please verify information with scholarly sources.
+                        </p>
+                    </div>
+                    <p class="text-gray-600">
+                        To use this tool, simply type your question about Indian history in the input field and click "Ask Question".
+                        You can also click on the suggestion buttons for quick queries about popular topics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-sm">© 2025 India History Explorer. This is a demonstration project. Not affiliated with any official historical organization.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
